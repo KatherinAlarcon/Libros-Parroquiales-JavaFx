@@ -8,7 +8,7 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uptcsoft.librosparroquialesjavafx.Interfaz.HelloController">
     <children>
         <Label fx:id="welcomeText" text="Welcome to JavaFX Application!" />
-      <Button mnemonicParsing="false" onAction="#onRegresarButtonClick" text="Button" />
+      <Button mnemonicParsing="false" onAction="#" text="Button" />
         <Button onAction="#onHelloButtonClick" text="Say Hello" />
       <Label fx:id="backText" text="Mafesuki" />
     </children>

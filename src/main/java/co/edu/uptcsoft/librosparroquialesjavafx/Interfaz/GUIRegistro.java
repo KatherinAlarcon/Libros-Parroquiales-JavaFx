@@ -1,17 +1,18 @@
 package co.edu.uptcsoft.librosparroquialesjavafx.Interfaz;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.*;
-import javafx.geometry.*;
-import javafx.stage.Stage;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
-public class GUIMenu extends Application {
-
+public class GUIRegistro extends Application {
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage stage) throws Exception {
 
         // Labels
         Label titleLabel = new Label("Iniciar Sesión");
@@ -52,11 +53,7 @@ public class GUIMenu extends Application {
         vbox.setPadding(new Insets(20));
 
         Scene scene = new Scene(vbox, 400, 300);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
+        stage.setScene(scene);
+        stage.show();
     }
 }

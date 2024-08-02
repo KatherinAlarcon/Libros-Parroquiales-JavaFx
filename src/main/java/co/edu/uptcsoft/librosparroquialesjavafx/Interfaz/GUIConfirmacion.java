@@ -32,19 +32,19 @@ public class GUIConfirmacion extends Application {
         textMenu.setStyle("-fx-font-size: 16px; -fx-font-family: 'Inter'; -fx-font-weight: bold;");
         textMenu.setAlignment(Pos.TOP_CENTER);
 
-        Button textInicio = createMenuButton("Inicio", "/Imnagenes/hogar.png", primaryStage, GUIMenu.class);
-        Button btnBautismo = createMenuButton("Bautismo", "/Imnagenes/Sol.png", primaryStage, GUIBautismo.class);
-        Button btnConfirmacion = createMenuButton("Confirmación", "/Imnagenes/paloma.png", primaryStage, GUIConfirmacion.class);
-        Button btnMatrimonio = createMenuButton("Matrimonio", "/Imnagenes/Anillo.png", primaryStage, GUIMatrimonio.class);
-        Button btnDefuncion = createMenuButton("Defunción", "/Imnagenes/ataud.png", primaryStage, GUIDefuncion.class);
-        Button btnSacerdote = createMenuButton("Sacerdotes", "/Imnagenes/Cruz.png", primaryStage, GUISacerdotes.class);
-        Button btnBuscar = createMenuButton("Buscar", "/Imnagenes/lupa.png", primaryStage, GUIBuscar.class);
+        Button textInicio = createMenuButton("Inicio", "/Imagenes/hogar.png", primaryStage, GUIMenu.class);
+        Button btnBautismo = createMenuButton("Bautismo", "/Imagenes/Sol.png", primaryStage, GUIBautismo.class);
+        Button btnConfirmacion = createMenuButton("Confirmación", "/Imagenes/paloma.png", primaryStage, GUIConfirmacion.class);
+        Button btnMatrimonio = createMenuButton("Matrimonio", "/Imagenes/Anillo.png", primaryStage, GUIMatrimonio.class);
+        Button btnDefuncion = createMenuButton("Defunción", "/Imagenes/ataud.png", primaryStage, GUIDefuncion.class);
+        Button btnSacerdote = createMenuButton("Sacerdotes", "/Imagenes/Cruz.png", primaryStage, GUISacerdotes.class);
+        Button btnBuscar = createMenuButton("Buscar", "/Imagenes/lupa.png", primaryStage, GUIBuscar.class);
 
         // Espacio flexible para empujar el botón "Salir" hacia abajo
         Region flexibleRegion = new Region();
         VBox.setVgrow(flexibleRegion, Priority.ALWAYS);
 
-        Button btnSalir = createMenuButton("Salir", "/Imnagenes/cerrar-sesion.png", primaryStage, GUILogin.class);
+        Button btnSalir = createMenuButton("Salir", "/Imagenes/cerrar-sesion.png", primaryStage, GUILogin.class);
 
         menuLateral.getChildren().addAll(
                 textLibrosEcle,
