@@ -56,6 +56,7 @@ public class GUILogin extends Application {
         ImageView icon = new ImageView(new Image(getClass().getResourceAsStream("/Imagenes/usuario.jpeg")));
         icon.setFitHeight(16);
         icon.setFitWidth(16);
+        icon.setTranslateY(9);
 
         HBox hBoxUsuario = new HBox(icon, nombreText);
         hBoxUsuario.setMaxWidth(250);
@@ -158,12 +159,12 @@ public class GUILogin extends Application {
 
         HBox h1 = new HBox();
         h1.getChildren().addAll(v1, v2);
-        HBox.setHgrow(v1, Priority.ALWAYS);
-        HBox.setHgrow(v2, Priority.ALWAYS);
 
         Scene scene = new Scene(h1, 1400, 700);
         stage.setTitle("Administrador De Libros Parroquiales");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
+
     }
 }
