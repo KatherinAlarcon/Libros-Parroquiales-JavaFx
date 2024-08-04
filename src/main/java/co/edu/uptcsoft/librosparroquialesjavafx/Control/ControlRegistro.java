@@ -11,8 +11,8 @@ public class ControlRegistro {
         registroPersistencia = new RegistroPersistencia();
     }
 
-    public boolean registrarUsuario(String nombreUsuario, String password, String confirmarPassword) {
-        if (!password.equals(confirmarPassword)) {
+    public boolean registrarUsuario (String nombreUsuario, String contraseñaUsuario, String confirmaraContraseña) {
+        if (!contraseñaUsuario.equals(confirmaraContraseña)) {
             return false;
         }
 
@@ -21,7 +21,7 @@ public class ControlRegistro {
             return false;
         }
 
-        Usuario nuevoUsuario = new Usuario(nombreUsuario, password);
+        Usuario nuevoUsuario = new Usuario(nombreUsuario, contraseñaUsuario);
         registroPersistencia.agregarUsuario(nuevoUsuario);
         return true;
 
