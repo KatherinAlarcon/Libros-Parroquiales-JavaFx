@@ -1,7 +1,7 @@
 package co.edu.uptcsoft.librosparroquialesjavafx.Interfaz;
 
-import co.edu.uptcsoft.librosparroquialesjavafx.Control.ControlBautismo;
-import co.edu.uptcsoft.librosparroquialesjavafx.Modelo.Bautismo;
+import co.edu.uptcsoft.librosparroquialesjavafx.Control.ControlConfirmacion;
+import co.edu.uptcsoft.librosparroquialesjavafx.Modelo.Confirmacion;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,45 +16,41 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
-public class GUIAgregarBautismo extends Application {
+public class GUIConfirmacionEditar extends Application {
     private TextField libroText;
     private TextField folioText;
     private TextField numeroText;
-    private TextField nombreText;
-    private TextField apellidoText;
-    private TextField papaText;
-    private TextField abueloPaternoText;
-    private TextField abueloMaternoText;
-    private TextField padrinoText;
-    private TextField lugarNacimiento;
-    private TextField mamaText;
-    private TextField abuelaPaterna;
-    private TextField abuelaMaterna;
-    private TextField madrina;
+    private TextField nombre;
+    private TextField apellido;
+    private TextField padre;
+    private TextField padrino;
+    private TextField lugarBautismo;
+    private TextField madre;
+    private TextField parroquiaBautismo;
     private ComboBox<String> genero;
     private ComboBox<String> ministro;
     private ComboBox<String> daFe;
     private DatePicker fechaNacimiento;
-    private DatePicker fechaBautismo;
+    private DatePicker fechaConfirmacion;
     private TextArea notaMarginal;
     private Button btnAgregar;
     private Button btnRegresar;
-    Label textLibrosEcle;
-    Label textMenu;
-    Button textInicio;
-    Button btnBautismo;
-    Button btnConfirmacion ;
-    Button btnMatrimonio;
-    Button btnDefuncion ;
-    Button btnSacerdote;
-    Button btnSalir;
-    Region flexibleRegion;
-    Label titulo;
+    private Label textLibrosEcle;
+    private Label textMenu;
+    private Button textInicio;
+    private Button btnBautismo;
+    private Button btnConfirmacion ;
+    private Button btnMatrimonio;
+    private Button btnDefuncion ;
+    private Button btnSacerdote;
+    private Button btnSalir;
+    private Region flexibleRegion;
+    private Label titulo;
+    private TextField lugarNacimiento;
     @Override
     public void start(Stage stage) {
         // menu lateral
@@ -120,7 +116,7 @@ public class GUIAgregarBautismo extends Application {
         );
         menuLateral.setPrefHeight(700);
         //menu horizontal
-        titulo = new Label("Bautismo");
+        titulo = new Label("Confirmacion/Editar");
         titulo.setFont(new Font("Arial", 30));
 
         //libro
@@ -158,22 +154,23 @@ public class GUIAgregarBautismo extends Application {
         hBoxLibro.getChildren().addAll(libroText, folioText, numeroText);
         hBoxLibro.setAlignment(Pos.CENTER);
         hBoxLibro.setTranslateX(50);
+        hBoxLibro.setTranslateY(20);
 
         //primera Columna
-        nombreText = new TextField();
-        nombreText.setPromptText("*Nombres");
-        nombreText.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
-        nombreText.textProperty().addListener((observable, oldValue, newValue) -> {
+        nombre = new TextField();
+        nombre.setPromptText("*Nombres");
+        nombre.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
+        nombre.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("[a-zA-Z ]*")) {
-                nombreText.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
+                nombre.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
             }
         });
-        apellidoText = new TextField();
-        apellidoText.setPromptText("*Apellidos");
-        apellidoText.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
-        apellidoText.textProperty().addListener((observable, oldValue, newValue) -> {
+        apellido = new TextField();
+        apellido.setPromptText("*Apellidos");
+        apellido.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
+        apellido.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("[a-zA-Z ]*")) {
-                apellidoText.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
+                apellido.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
             }
         });
 
@@ -183,39 +180,30 @@ public class GUIAgregarBautismo extends Application {
         genero.setValue("*Genero");
         genero.setPrefWidth(540);
 
-        papaText = new TextField();
-        papaText.setPromptText("Nombre del padre");
-        papaText.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
-        papaText.textProperty().addListener((observable, oldValue, newValue) -> {
+        padre = new TextField();
+        padre.setPromptText("Nombre del padre");
+        padre.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
+        padre.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("[a-zA-Z ]*")) {
-                apellidoText.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
+                padre.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
             }
         });
 
-        abueloPaternoText = new TextField();
-        abueloPaternoText.setPromptText("Abuelo Paterno");
-        abueloPaternoText.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
-        abueloPaternoText.textProperty().addListener((observable, oldValue, newValue) -> {
+        padrino = new TextField();
+        padrino.setPromptText("Padrino");
+        padrino.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
+        padrino.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("[a-zA-Z ]*")) {
-                apellidoText.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
+                padrino.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
             }
         });
 
-        abueloMaternoText = new TextField();
-        abueloMaternoText.setPromptText("Abuelo Materno");
-        abueloMaternoText.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
-        abueloMaternoText.textProperty().addListener((observable, oldValue, newValue) -> {
+        lugarBautismo = new TextField();
+        lugarBautismo.setPromptText("Lugar de bautismo");
+        lugarBautismo.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
+        lugarBautismo.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("[a-zA-Z ]*")) {
-                apellidoText.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
-            }
-        });
-
-        padrinoText = new TextField();
-        padrinoText.setPromptText("Padrino");
-        padrinoText.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
-        padrinoText.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("[a-zA-Z ]*")) {
-                apellidoText.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
+                lugarBautismo.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
             }
         });
 
@@ -226,7 +214,7 @@ public class GUIAgregarBautismo extends Application {
         ministro.setPrefWidth(540);
 
         VBox columna1 = new VBox(15);
-        columna1.getChildren().addAll(nombreText, apellidoText, genero, papaText, abueloPaternoText, abueloMaternoText, padrinoText, ministro);
+        columna1.getChildren().addAll(nombre, apellido, genero, padre, padrino, lugarBautismo, ministro);
         columna1.setPrefWidth(540);
         columna1.setAlignment(Pos.TOP_LEFT);
 
@@ -249,15 +237,15 @@ public class GUIAgregarBautismo extends Application {
         lugarNacimiento.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
         lugarNacimiento.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("[a-zA-Z ]*")) {
-                apellidoText.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
+                lugarNacimiento.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
             }
         });
 
-        fechaBautismo = new DatePicker();
-        fechaBautismo.setPromptText("*Fecha de Bautismo");
-        fechaBautismo.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
-        fechaBautismo.setPrefWidth(520);
-        fechaBautismo.setDayCellFactory(picker -> new DateCell() {
+        fechaConfirmacion = new DatePicker();
+        fechaConfirmacion.setPromptText("*Fecha de confirmacion");
+        fechaConfirmacion.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
+        fechaConfirmacion.setPrefWidth(520);
+        fechaConfirmacion.setDayCellFactory(picker -> new DateCell() {
             @Override
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
@@ -265,39 +253,21 @@ public class GUIAgregarBautismo extends Application {
             }
         });
 
-        mamaText = new TextField();
-        mamaText.setPromptText("Nombre de la Madre");
-        mamaText.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
-        mamaText.textProperty().addListener((observable, oldValue, newValue) -> {
+        madre = new TextField();
+        madre.setPromptText("Nombre de la Madre");
+        madre.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
+        madre.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("[a-zA-Z ]*")) {
-                apellidoText.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
+                apellido.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
             }
         });
 
-        abuelaPaterna = new TextField();
-        abuelaPaterna.setPromptText("Abuela Paterna");
-        abuelaPaterna.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
-        abuelaPaterna.textProperty().addListener((observable, oldValue, newValue) -> {
+        parroquiaBautismo = new TextField();
+        parroquiaBautismo.setPromptText("Parroquia de bautismo");
+        parroquiaBautismo.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
+        parroquiaBautismo.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("[a-zA-Z ]*")) {
-                apellidoText.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
-            }
-        });
-
-        abuelaMaterna = new TextField();
-        abuelaMaterna.setPromptText("Abuela Materna");
-        abuelaMaterna.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
-        abuelaMaterna.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("[a-zA-Z ]*")) {
-                apellidoText.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
-            }
-        });
-
-        madrina = new TextField();
-        madrina.setPromptText("Madrina");
-        madrina.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-radius:10;-fx-border-color: #2e3c85;");
-        madrina.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("[a-zA-Z ]*")) {
-                apellidoText.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
+                apellido.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
             }
         });
 
@@ -308,7 +278,7 @@ public class GUIAgregarBautismo extends Application {
         daFe.setPrefWidth(520);
 
         VBox columna2 = new VBox(15);
-        columna2.getChildren().addAll(fechaNacimiento, lugarNacimiento, fechaBautismo, mamaText, abuelaPaterna, abuelaMaterna, madrina, daFe);
+        columna2.getChildren().addAll(fechaNacimiento, lugarNacimiento, fechaConfirmacion, madre, parroquiaBautismo, daFe);
         columna2.setAlignment(Pos.TOP_LEFT);
         columna2.setPrefWidth(520);
 
@@ -316,12 +286,14 @@ public class GUIAgregarBautismo extends Application {
         columnas.getChildren().addAll(columna1, columna2);
         columnas.setAlignment(Pos.CENTER);
         columnas.setTranslateX(20);
+        columnas.setTranslateY(35);
 
         notaMarginal = new TextArea();
         notaMarginal.setStyle("-fx-font-size: 15;-fx-background-color: transparent;-fx-border-color: #2e3c85;-fx-border-radius:10;");
         notaMarginal.setPromptText("Nota Marginal");
         notaMarginal.setPrefHeight(70);
         notaMarginal.setTranslateX(20);
+        notaMarginal.setTranslateY(40);
 
         btnAgregar = new Button("Agregar");
         btnAgregar.setFont(new Font(20));
@@ -334,30 +306,33 @@ public class GUIAgregarBautismo extends Application {
         btnAgregar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                TextField[] requiredFields = {libroText, folioText, numeroText, nombreText, apellidoText};
-
+                TextField[] requiredFields = {libroText, folioText, numeroText, nombre, apellido};
                 Validator validator = new Validator();
+
                 boolean allFieldsFilled = validator.areTextFieldsFilled(requiredFields) &&
-                        validator.areComboBoxesAndDatesValid(genero, ministro, fechaNacimiento, fechaBautismo);
-                boolean guardarPersistencia = actualizarBautismoDesdeInterfaz();
-                if (allFieldsFilled && guardarPersistencia) {
-                    if (fechaNacimiento.getValue().isAfter(fechaBautismo.getValue())) {
-                        Alert alert = new Alert(Alert.AlertType.WARNING);
-                        alert.setTitle("Error en las fechas");
-                        alert.setHeaderText(null);
-                        alert.setContentText("La fecha de nacimiento no puede ser posterior a la fecha de bautismo.");
-                        alert.showAndWait();
-                    } else {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Acceso correcto");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Cambios guardados correctamente");
-                        alert.showAndWait();
-                        try {
-                            GUIMenu menu = new GUIMenu();
-                            menu.start(stage);
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                        validator.areComboBoxesAndDatesValid(genero, ministro, fechaNacimiento, fechaConfirmacion);
+
+                if (allFieldsFilled) {
+                    boolean guardarPersistencia = actualizarBautismoDesdeInterfaz();
+                    if (guardarPersistencia) {
+                        if (fechaNacimiento.getValue().isAfter(fechaConfirmacion.getValue())) {
+                            Alert alert = new Alert(Alert.AlertType.WARNING);
+                            alert.setTitle("Error en las fechas");
+                            alert.setHeaderText(null);
+                            alert.setContentText("La fecha de nacimiento no puede ser posterior a la fecha de confirmación.");
+                            alert.showAndWait();
+                        } else {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Acceso correcto");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Cambios guardados correctamente");
+                            alert.showAndWait();
+                            try {
+                                GUIMenu menu = new GUIMenu();
+                                menu.start(stage);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 } else {
@@ -367,7 +342,6 @@ public class GUIAgregarBautismo extends Application {
                     alert.setContentText("Por favor, completa todos los campos necesarios.");
                     alert.showAndWait();
                 }
-
             }
         });
 
@@ -395,8 +369,8 @@ public class GUIAgregarBautismo extends Application {
                 if (result.isPresent() && result.get() == ButtonType.OK) {
 
                     try {
-                        GUIMenu menu = new GUIMenu();
-                        menu.start(stage);
+                        GUIConfirmacion confirmacion= new GUIConfirmacion();
+                        confirmacion.start(stage);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -411,6 +385,7 @@ public class GUIAgregarBautismo extends Application {
         });
         HBox botones = new HBox(50);
         botones.getChildren().addAll(btnAgregar, btnRegresar);
+        botones.setTranslateY(20);
         botones.setAlignment(Pos.CENTER);
         botones.setPrefWidth(1000);
         VBox.setMargin(botones, new Insets(40, 0, 0, 0));
@@ -428,7 +403,7 @@ public class GUIAgregarBautismo extends Application {
 
         Scene scene = new Scene(menuHorizontal, 1400, 700);
 
-        stage.setTitle("Bautismo");
+        stage.setTitle("Confirmacion");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
@@ -480,41 +455,48 @@ public class GUIAgregarBautismo extends Application {
     }
     public boolean actualizarBautismoDesdeInterfaz() {
         try {
-            ControlBautismo ctrlBautismo = new ControlBautismo();
-            Bautismo bautismo = new Bautismo();
-            if (bautismo != null) {
-                bautismo.setLibro(libroText.getText());
-                bautismo.setFolio(folioText.getText());
-                bautismo.setNumero(numeroText.getText());
-                bautismo.setNombres(nombreText.getText());
-                bautismo.setApellidos(apellidoText.getText());
-                bautismo.setPadre(papaText.getText());
+            ControlConfirmacion ctrlConfirmacion = new ControlConfirmacion();
+            int index = ctrlConfirmacion.buscarConfirmacion(libroText.getText(), numeroText.getText());
+            Confirmacion confirmacion = null;
+            if (index != -1) {
+                confirmacion = ctrlConfirmacion.getListaConfirmacion().get(index);
+            }
+            if (confirmacion != null) {
+                confirmacion.setLibro(libroText.getText());
+                confirmacion.setFolio(folioText.getText());
+                confirmacion.setNumero(numeroText.getText());
+                confirmacion.setNombres(nombre.getText());
+                confirmacion.setApellidos(apellido.getText());
+                confirmacion.setGenero( genero.getValue());
+                confirmacion.setPadre(padre.getText());
+                confirmacion.setPadrinos(padrino.getText());
+                confirmacion.setLugarBautismo(lugarBautismo.getText());
+                confirmacion.setMinistro(ministro.getValue());
 
                 LocalDate selectedDate = fechaNacimiento.getValue();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 String formattedDate = selectedDate.format(formatter);
-                bautismo.setFechaNacimiento(formattedDate);
-                bautismo.setLugarNacimiento(lugarNacimiento.getText());
-                bautismo.setGenero((String) genero.getValue());
-                bautismo.setMadre(mamaText.getText());
-                bautismo.setAbueloPaterno(abueloPaternoText.getText());
-                bautismo.setAbuelaPaterna(abuelaPaterna.getText());
-                bautismo.setAbueloMaterno(abueloMaternoText.getText());
-                bautismo.setAbuelaMaterna(abuelaMaterna.getText());
-                bautismo.setPadrinos(padrinoText.getText());
-                bautismo.setMadrina(madrina.getText());
-                bautismo.setMinistro((String) ministro.getValue());
-                bautismo.setDaFe((String) daFe.getValue());
-                bautismo.setNotaMarginal(notaMarginal.getText());
+                confirmacion.setFechaNacimiento(formattedDate);
 
-                if (ctrlBautismo.agregarBautismo(bautismo)) {
+                confirmacion.setLugarNacimiento(lugarNacimiento.getText());
+
+                LocalDate selectedDate1 = fechaConfirmacion.getValue();
+                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                String formattedDate1 = selectedDate1.format(formatter1);
+                confirmacion.setFechaConfirmacion(formattedDate1);
+
+                confirmacion.setMadre(madre.getText());
+                confirmacion.setMadrina(parroquiaBautismo.getText());
+                confirmacion.setDaFe( daFe.getValue());
+                confirmacion.setNotaMarginal(notaMarginal.getText());
+                if (ctrlConfirmacion.agregarConfirmacion(confirmacion)) {
                     return true; // Guardado exitoso
                 } else {
-                    // Muestra un mensaje de advertencia si ya existe el bautismo
+                    // Muestra un mensaje de advertencia si ya existe el confirmacion
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Bautismo duplicado");
-                    alert.setHeaderText("El bautismo ya existe");
-                    alert.setContentText("Ya existe un bautismo con el mismo libro, número y folio.");
+                    alert.setHeaderText("El confirmacion ya existe");
+                    alert.setContentText("Ya existe un confirmacion con el mismo libro, número y folio.");
                     alert.showAndWait();
                     return false;
                 }
@@ -532,8 +514,41 @@ public class GUIAgregarBautismo extends Application {
             return false;
         }
     }
+    public void initData(String numero) {
+        ControlConfirmacion controlConfirmacion = new ControlConfirmacion();
+        int index = controlConfirmacion.buscarConfirmacion("2", numero);
+        Confirmacion confirmacion = null;
+        System.out.printf(numero+"entro a la confirmacion "+index);
+        if (index != -1) {
 
+            confirmacion = controlConfirmacion.getListaConfirmacion().get(index);
+        }
+        if (confirmacion != null) {
+            System.out.println(confirmacion.getLibro());
+            System.out.println(confirmacion.getFolio());
+            System.out.println(confirmacion.getNumero());
+            System.out.println(confirmacion.getNombres());
+            System.out.println(confirmacion.getApellidos());
+            System.out.println(confirmacion.getGenero());
+            libroText.setText(confirmacion.getLibro());
+            folioText.setText(confirmacion.getFolio());
+            numeroText.setText(confirmacion.getNumero());
+            nombre.setText(confirmacion.getNombres());
+            apellido.setText(confirmacion.getApellidos());
+            genero.setValue(confirmacion.getGenero());
+            padre.setText(confirmacion.getPadre());
+            padrino.setText(confirmacion.getPadrinos());
+            lugarBautismo.setText(confirmacion.getLugarBautismo());
+            ministro.setValue(confirmacion.getMinistro());
+            fechaNacimiento.setValue(LocalDate.parse(confirmacion.getFechaNacimiento()));
+            lugarNacimiento.setText(confirmacion.getLugarNacimiento());
+            fechaConfirmacion.setValue(LocalDate.parse(confirmacion.getFechaConfirmacion()));
+            madre.setText(confirmacion.getMadre());
+            parroquiaBautismo.setText(confirmacion.getMadrina());
+            daFe.setValue(confirmacion.getDaFe());
+            notaMarginal.setText(confirmacion.getNotaMarginal());
+        }
+    }
 
 
 }
-
