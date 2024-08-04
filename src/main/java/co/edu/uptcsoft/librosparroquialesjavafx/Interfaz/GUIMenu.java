@@ -52,8 +52,8 @@ public class GUIMenu extends Application {
         btnBautismo.setOnAction(e -> menuBautismo.show(btnBautismo, Side.BOTTOM, 0, 0));
 
         agregarBautismo.setOnAction(e ->{
-                GUIAgregarBautismo guiAgregarBautismo = new GUIAgregarBautismo();
-                guiAgregarBautismo.start(stage);
+                GUIBautismoAgregar guiBautismoAgregar = new GUIBautismoAgregar();
+                guiBautismoAgregar.start(stage);
         });
 
         buscarBautismo.setOnAction(e ->{
@@ -92,6 +92,24 @@ public class GUIMenu extends Application {
 
         // Asignar la acción de mostrar el menú contextual al botón
         btnConfirmacion.setOnAction(e -> menuConfirmacion.show(btnConfirmacion, Side.BOTTOM, 0, 0));
+        agregarConfirmacion.setOnAction(e ->{
+            GUIConfirmacionAgregar guiConfirmacionAgregar = new GUIConfirmacionAgregar();
+            try {
+                guiConfirmacionAgregar.start(stage);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        buscarConfirmacion.setOnAction(e ->{
+            GUIConfirmacionBuscar guiConfirmacionBuscar = new GUIConfirmacionBuscar();
+            try {
+                guiConfirmacionBuscar.start(stage);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
         VBox vBoxConfirmacion = new VBox();
         vBoxConfirmacion.getChildren().addAll(btnConfirmacion,confirmacion);
         vBoxConfirmacion.setAlignment(Pos.CENTER);
@@ -120,6 +138,24 @@ public class GUIMenu extends Application {
 
         // Asignar la acción de mostrar el menú contextual al botón
         btnMatrimonio.setOnAction(e -> menuMatrimonio.show(btnMatrimonio, Side.BOTTOM, 0, 0));
+
+        agregarMatrimonio.setOnAction(e ->{
+            GUIMatrimonioAgregar guiMatrimonioAgregar = new GUIMatrimonioAgregar();
+            try {
+                guiMatrimonioAgregar.start(stage);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        buscarMatrimonio.setOnAction(e ->{
+            GUIMatrimonioBuscar guiMatrimonioBuscar = new GUIMatrimonioBuscar();
+            try {
+                guiMatrimonioBuscar.start(stage);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
         // Manejar eventos de los elementos del menú
         agregarMatrimonio.setOnAction(e -> System.out.println("Crear una reunión para más tarde seleccionado"));
@@ -155,8 +191,25 @@ public class GUIMenu extends Application {
 
         // Asignar la acción de mostrar el menú contextual al botón
         btnDefuncion.setOnAction(e -> menuDefuncion.show(btnDefuncion, Side.BOTTOM, 0, 0));
+        agregarDefuncion.setOnAction(e ->{
+            GUIDefuncionAgregar guiDefuncionAgregar = new GUIDefuncionAgregar();
+            try {
+                guiDefuncionAgregar.start(stage);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
-        // Manejar eventos de los elementos del menú
+        buscarDefuncion.setOnAction(e ->{
+            GUIDefuncionBuscar guiDefuncionBuscar = new GUIDefuncionBuscar();
+            try {
+                guiDefuncionBuscar.start(stage);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+                // Manejar eventos de los elementos del menú
         agregarDefuncion.setOnAction(e -> System.out.println("Crear una reunión para más tarde seleccionado"));
         buscarDefuncion.setOnAction(e -> System.out.println("Iniciar una reunión ahora seleccionado"));
 

@@ -33,7 +33,7 @@ public class GUIBuscarBautismo extends Application {
         textMenu.setAlignment(Pos.TOP_CENTER);
 
         Button textInicio = createMenuButton("Inicio", "/Imagenes/hogar.png", stage, GUIMenu.class);
-        Button btnBautismo = createMenuButton("Bautismo", "/Imagenes/Sol.png", stage, GUIAgregarBautismo.class);
+        Button btnBautismo = createMenuButton("Bautismo", "/Imagenes/Sol.png", stage, GUIBautismoAgregar.class);
         Button btnConfirmacion = createMenuButton("Confirmación", "/Imagenes/paloma.png", stage, GUIConfirmacion.class);
         Button btnMatrimonio = createMenuButton("Matrimonio", "/Imagenes/Anillo.png", stage, GUIMatrimonio.class);
         Button btnDefuncion = createMenuButton("Defunción", "/Imagenes/ataud.png", stage, GUIDefuncion.class);
