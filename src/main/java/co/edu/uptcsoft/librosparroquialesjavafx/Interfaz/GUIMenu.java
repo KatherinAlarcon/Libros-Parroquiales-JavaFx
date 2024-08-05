@@ -57,8 +57,12 @@ public class GUIMenu extends Application {
         });
 
         buscarBautismo.setOnAction(e ->{
-            GUIBuscarBautismo guiBuscarBautismo = new GUIBuscarBautismo();
-            guiBuscarBautismo.start(stage);
+            GUIBautismoBuscar guiBuscarBautismo = new GUIBautismoBuscar();
+            try {
+                guiBuscarBautismo.start(stage);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
         });
 
         VBox vBoxBautismo = new VBox();
