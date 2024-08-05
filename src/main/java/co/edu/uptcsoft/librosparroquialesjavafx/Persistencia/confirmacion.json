@@ -1,0 +1,44 @@
+[
+  {
+    "madrina": "",
+    "lugarBautismo": "",
+    "fechaConfirmacion": "2024-08-04",
+    "persona": {
+      "nombres": "cx",
+      "fechaNacimiento": "2024-07-28",
+      "apellidos": "xcx",
+      "lugarNacimiento": "",
+      "genero": "Femenino",
+      "padre": "",
+      "madre": "",
+      "padrinos": ""
+    },
+    "libro": "1",
+    "folio": "2",
+    "numero": "3",
+    "ministro": "ministro 1",
+    "daFe": "1",
+    "notaMarginal": ""
+  },
+  {
+    "madrina": "",
+    "lugarBautismo": "",
+    "fechaConfirmacion": "2024-08-04",
+    "persona": {
+      "nombres": "yenny ",
+      "fechaNacimiento": "2024-07-28",
+      "apellidos": "alarcon",
+      "lugarNacimiento": "",
+      "genero": "Femenino",
+      "padre": "",
+      "madre": "",
+      "padrinos": ""
+    },
+    "libro": "1",
+    "folio": "2",
+    "numero": "33",
+    "ministro": "ministro 1",
+    "daFe": "1",
+    "notaMarginal": ""
+  }
+]

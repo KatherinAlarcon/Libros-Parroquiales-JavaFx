@@ -12,11 +12,11 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class GUIConfirmacion extends Application {
+public class GUIBuscarBautismo extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
-        // Menu Lateral
+    public void start(Stage stage) {
+
         VBox menuLateral = new VBox(2);
         menuLateral.setBackground(new Background(new BackgroundFill(Color.rgb(46, 60, 134), null, null)));
         menuLateral.setPrefWidth(256);
@@ -32,19 +32,19 @@ public class GUIConfirmacion extends Application {
         textMenu.setStyle("-fx-font-size: 16px; -fx-font-family: 'Inter'; -fx-font-weight: bold;");
         textMenu.setAlignment(Pos.TOP_CENTER);
 
-        Button textInicio = createMenuButton("Inicio", "/Imagenes/hogar.png", primaryStage, GUIMenu.class);
-        Button btnBautismo = createMenuButton("Bautismo", "/Imagenes/Sol.png", primaryStage, GUIBautismo.class);
-        Button btnConfirmacion = createMenuButton("Confirmación", "/Imagenes/paloma.png", primaryStage, GUIConfirmacion.class);
-        Button btnMatrimonio = createMenuButton("Matrimonio", "/Imagenes/Anillo.png", primaryStage, GUIMatrimonio.class);
-        Button btnDefuncion = createMenuButton("Defunción", "/Imagenes/ataud.png", primaryStage, GUIDefuncion.class);
-        Button btnSacerdote = createMenuButton("Sacerdotes", "/Imagenes/Cruz.png", primaryStage, GUISacerdotes.class);
-        Button btnBuscar = createMenuButton("Buscar", "/Imagenes/lupa.png", primaryStage, GUIBuscar.class);
+        Button textInicio = createMenuButton("Inicio", "/Imagenes/hogar.png", stage, GUIMenu.class);
+        Button btnBautismo = createMenuButton("Bautismo", "/Imagenes/Sol.png", stage, GUIAgregarBautismo.class);
+        Button btnConfirmacion = createMenuButton("Confirmación", "/Imagenes/paloma.png", stage, GUIAgregarConfirmacion.class);
+        Button btnMatrimonio = createMenuButton("Matrimonio", "/Imagenes/Anillo.png", stage, GUIMatrimonio.class);
+        Button btnDefuncion = createMenuButton("Defunción", "/Imagenes/ataud.png", stage, GUIDefuncion.class);
+        Button btnSacerdote = createMenuButton("Sacerdotes", "/Imagenes/Cruz.png", stage, GUISacerdotes.class);
+        Button btnBuscar = createMenuButton("Buscar", "/Imagenes/lupa.png", stage, GUIBuscar.class);
 
         // Espacio flexible para empujar el botón "Salir" hacia abajo
         Region flexibleRegion = new Region();
         VBox.setVgrow(flexibleRegion, Priority.ALWAYS);
 
-        Button btnSalir = createMenuButton("Salir", "/Imagenes/cerrar-sesion.png", primaryStage, GUILogin.class);
+        Button btnSalir = createMenuButton("Salir", "/Imagenes/cerrar-sesion.png", stage, GUILogin.class);
 
         menuLateral.getChildren().addAll(
                 textLibrosEcle,
@@ -67,11 +67,11 @@ public class GUIConfirmacion extends Application {
         root.setLeft(menuLateral);
         root.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 
-        Scene scene = new Scene(root, 1400, 750);  // Ensure the scene is large enough
+        Scene scene = new Scene(root, 1400, 750);
 
-        primaryStage.setTitle("Confirmación");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.setTitle("Bautismo");
+        stage.setScene(scene);
+        stage.show();
     }
 
     private Button createMenuButton(String text, String imagePath, Stage currentStage, Class<? extends Application> targetClass) {
@@ -98,7 +98,5 @@ public class GUIConfirmacion extends Application {
         return button;
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 }
+
