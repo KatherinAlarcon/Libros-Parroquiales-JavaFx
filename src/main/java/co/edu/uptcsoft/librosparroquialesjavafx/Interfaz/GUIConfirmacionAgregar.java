@@ -20,7 +20,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
-public class GUIAgregarConfirmacion extends Application {
+public class GUIConfirmacionAgregar extends Application {
     private TextField libroText;
     private TextField folioText;
     private TextField numeroText;
@@ -71,7 +71,7 @@ public class GUIAgregarConfirmacion extends Application {
 
         textInicio = createMenuButton("Inicio", "/Imagenes/hogar.png", stage, GUIMenu.class);
         btnBautismo = createMenuButton("Bautismo", "/Imagenes/Sol.png", stage, GUIAgregarBautismo.class);
-        btnConfirmacion = createMenuButton("Confirmación", "/Imagenes/paloma.png", stage, GUIAgregarConfirmacion.class);
+        btnConfirmacion = createMenuButton("Confirmación", "/Imagenes/paloma.png", stage, GUIConfirmacionAgregar.class);
         btnMatrimonio = createMenuButton("Matrimonio", "/Imagenes/Anillo.png", stage, GUIMatrimonio.class);
         btnDefuncion = createMenuButton("Defunción", "/Imagenes/ataud.png", stage, GUIDefuncion.class);
         btnSacerdote = createMenuButton("Sacerdotes", "/Imagenes/Cruz.png", stage, GUISacerdotes.class);
@@ -307,29 +307,32 @@ public class GUIAgregarConfirmacion extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 TextField[] requiredFields = {libroText, folioText, numeroText, nombre, apellido};
-
                 Validator validator = new Validator();
+
                 boolean allFieldsFilled = validator.areTextFieldsFilled(requiredFields) &&
                         validator.areComboBoxesAndDatesValid(genero, ministro, fechaNacimiento, fechaConfirmacion);
-                boolean guardarPersistencia = actualizarBautismoDesdeInterfaz();
-                if (allFieldsFilled && guardarPersistencia) {
-                    if (fechaNacimiento.getValue().isAfter(fechaConfirmacion.getValue())) {
-                        Alert alert = new Alert(Alert.AlertType.WARNING);
-                        alert.setTitle("Error en las fechas");
-                        alert.setHeaderText(null);
-                        alert.setContentText("La fecha de nacimiento no puede ser posterior a la fecha de confirmacion.");
-                        alert.showAndWait();
-                    } else {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Acceso correcto");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Cambios guardados correctamente");
-                        alert.showAndWait();
-                        try {
-                            GUIMenu menu = new GUIMenu();
-                            menu.start(stage);
-                        } catch (Exception e) {
-                            e.printStackTrace();
+
+                if (allFieldsFilled) {
+                    boolean guardarPersistencia = actualizarBautismoDesdeInterfaz();
+                    if (guardarPersistencia) {
+                        if (fechaNacimiento.getValue().isAfter(fechaConfirmacion.getValue())) {
+                            Alert alert = new Alert(Alert.AlertType.WARNING);
+                            alert.setTitle("Error en las fechas");
+                            alert.setHeaderText(null);
+                            alert.setContentText("La fecha de nacimiento no puede ser posterior a la fecha de confirmación.");
+                            alert.showAndWait();
+                        } else {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Acceso correcto");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Cambios guardados correctamente");
+                            alert.showAndWait();
+                            try {
+                                GUIMenu menu = new GUIMenu();
+                                menu.start(stage);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 } else {
@@ -339,7 +342,6 @@ public class GUIAgregarConfirmacion extends Application {
                     alert.setContentText("Por favor, completa todos los campos necesarios.");
                     alert.showAndWait();
                 }
-
             }
         });
 
