@@ -41,31 +41,54 @@ public class ControlBautismo {
         listaBautismo = bautismoPersistencia.cargarDesdeArchivo("src/main/java/co/edu/uptcsoft/librosparroquialesjavafx/Persistencia/Bautismo.json");
     }
 
-    public void editarBautismo(String folio, String numero, Bautismo nuevoBautismo) {
-        int index = buscarBautismo(folio, numero);
+    public void editarBautismo(String libro, String numero, Bautismo nuevoBautismo) {
+        int index = buscarBautismo(libro, numero);
         if (index >= 0 && index < listaBautismo.size()) {
             listaBautismo.set(index, nuevoBautismo);
             guardarEnArchivo();
         }
     }
 
-    public void eliminarBautismo(String folio, String numero) {
-        int index = buscarBautismo(folio, numero);
+    public void eliminarBautismo(String libro, String numero) {
+        int index = buscarBautismo(libro, numero);
         if (index >= 0 && index < listaBautismo.size()) {
             listaBautismo.remove(index);
             guardarEnArchivo();
         }
     }
 
-    public int buscarBautismo(String folio, String numero) {
+    public int buscarBautismo(String libro, String numero) {
         for (int i = 0; i < listaBautismo.size(); i++) {
-            if (listaBautismo.get(i).getFolio().equals(folio) && listaBautismo.get(i).getNumero().equals(numero)) {
+            if (listaBautismo.get(i).getLibro().equals(libro) && listaBautismo.get(i).getNumero().equals(numero)) {
                 return i;
             }
         }
         return -1;
     }
+    public void mostrarListaBautismo() {
+        for (Bautismo bautismo : listaBautismo) {
+            System.out.println("Libro: " + bautismo.getLibro() + ", Número: " + bautismo.getNumero() + ", Folio: " + bautismo.getFolio());
+        }
+    }
 
+    public Bautismo getBautismoyNumero (String numero){
+        for (Bautismo bautismo : listaBautismo){
+            if (bautismo.getNumero().equals(numero)){
+                return bautismo;
+            }
+        }
+        return null;
+    }
+
+    public Bautismo obtenerBautismo (String numero){
+        for (Bautismo bautismo : listaBautismo){
+            if (bautismo.getNumero().equals(numero)){
+                return bautismo;
+            }
+        }
+        return null;
+
+    }
     public boolean existeBautismo(String libro, String numero, String folio) {
         for (Bautismo bautismo : listaBautismo) {
             if (bautismo.getLibro().equals(libro) && bautismo.getNumero().equals(numero) && bautismo.getFolio().equals(folio)) {
@@ -76,9 +99,5 @@ public class ControlBautismo {
     }
 
     // Método para mostrar los datos de la lista
-    public void mostrarListaBautismo() {
-        for (Bautismo bautismo : listaBautismo) {
-            System.out.println("Libro: " + bautismo.getLibro() + ", Número: " + bautismo.getNumero() + ", Folio: " + bautismo.getFolio());
-        }
-    }
+
 }
