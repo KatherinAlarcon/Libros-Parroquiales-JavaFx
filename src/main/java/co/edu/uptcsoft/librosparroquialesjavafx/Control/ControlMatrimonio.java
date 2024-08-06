@@ -38,25 +38,25 @@ public class ControlMatrimonio {
         listaMatrimonio = matrimonioPersistencia.cargarDesdeArchivo("src/main/java/co/edu/uptcsoft/librosparroquialesjavafx/Persistencia/matrimonioData.json");
     }
 
-    public void editarMatrimonio(String libro, String numero, Matrimonio nuevoMatrimonio) {
-        int index = buscarMatrimonio(libro, numero);
+    public void editarMatrimonio(String numero, Matrimonio nuevoMatrimonio) {
+        int index = buscarMatrimonio(numero);
         if (index >= 0 && index < listaMatrimonio.size()) {
             listaMatrimonio.set(index, nuevoMatrimonio);
             guardarEnArchivo();
         }
     }
 
-    public void eliminarMatrimonio(String libro, String numero) {
-        int index = buscarMatrimonio(libro, numero);
+    public void eliminarMatrimonio(String numero) {
+        int index = buscarMatrimonio(numero);
         if (index >= 0 && index < listaMatrimonio.size()) {
             listaMatrimonio.remove(index);
             guardarEnArchivo();
         }
     }
 
-    public int buscarMatrimonio(String libro, String numero) {
+    public int buscarMatrimonio( String numero) {
         for (int i = 0; i < listaMatrimonio.size(); i++) {
-            if (listaMatrimonio.get(i).getLibro().equals(libro) && listaMatrimonio.get(i).getNumero().equals(numero)) {
+            if (listaMatrimonio.get(i).getNumero().equals(numero)) {
                 return i;
             }
         }
@@ -68,6 +68,24 @@ public class ControlMatrimonio {
         for (Matrimonio matrimonio : listaMatrimonio) {
             System.out.println("Libro: " + matrimonio.getLibro() + ", Número: " + matrimonio.getNumero());
         }
+    }
+
+    public Matrimonio getMatrimonioByNumero(String numero) {
+        for (Matrimonio matrimonio : listaMatrimonio) {
+            if (matrimonio.getNumero().equals(numero)) {
+                return matrimonio;
+            }
+        }
+        return null;
+    }
+
+    public Matrimonio obtenerMatrimonio(String numero) {
+        for (Matrimonio matrimonio : listaMatrimonio) {
+            if (matrimonio.getNumero().equals(numero)) {
+                return matrimonio;
+            }
+        }
+        return null;
     }
 }
 
