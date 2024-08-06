@@ -1,0 +1,90 @@
+[
+  {
+    "causaMuerte": "Natural",
+    "estadoCivil": "Soltero",
+    "edad": "24",
+    "conyuge": "Samanta",
+    "lugarMuerte": "Cali",
+    "persona": {
+      "nombres": "Carlos Martinez",
+      "fechaNacimiento": "2000-08-16",
+      "apellidos": "",
+      "lugarNacimiento": "Boyaca",
+      "genero": "Masculino",
+      "padre": "Rodolfo",
+      "madre": "Karla"
+    },
+    "libro": "",
+    "folio": "",
+    "numero": "",
+    "ministro": "ministro 1",
+    "daFe": "2",
+    "notaMarginal": "Nota marginal txtxtxtxtx"
+  },
+  {
+    "causaMuerte": "Natural",
+    "estadoCivil": "Soltero",
+    "edad": "24",
+    "conyuge": "Samanta",
+    "lugarMuerte": "Cali",
+    "persona": {
+      "nombres": "Jose Torres",
+      "fechaNacimiento": "2000-08-16",
+      "apellidos": "Torres",
+      "lugarNacimiento": "Boyaca",
+      "genero": "Masculino",
+      "padre": "Rodolfo",
+      "madre": "Karla"
+    },
+    "libro": "1",
+    "folio": "2",
+    "numero": "321",
+    "ministro": "ministro 1",
+    "daFe": "2",
+    "notaMarginal": "Nota marginal txtxtxtxtx"
+  },
+  {
+    "causaMuerte": "Natural",
+    "estadoCivil": "Soltero",
+    "edad": "20",
+    "conyuge": "dasdsd",
+    "lugarMuerte": "Lugar",
+    "persona": {
+      "nombres": "Marcos Fernando",
+      "fechaNacimiento": "2020-08-10",
+      "apellidos": "",
+      "lugarNacimiento": "Boyaca",
+      "genero": "Masculino",
+      "padre": "Carelo",
+      "madre": "Fernada"
+    },
+    "libro": "1",
+    "folio": "2",
+    "numero": "753",
+    "ministro": "ministro 1",
+    "daFe": "1",
+    "notaMarginal": "sads"
+  },
+  {
+    "causaMuerte": "Natural",
+    "estadoCivil": "Soltero",
+    "edad": "20",
+    "conyuge": "dasdsd",
+    "lugarMuerte": "Lugar",
+    "persona": {
+      "nombres": "Marcos Fernando",
+      "fechaNacimiento": "2020-08-10",
+      "apellidos": "Torres",
+      "lugarNacimiento": "Boyaca",
+      "genero": "Masculino",
+      "padre": "Carelo",
+      "madre": "Fernada"
+    },
+    "libro": "1",
+    "folio": "2",
+    "numero": "75",
+    "ministro": "ministro 1",
+    "daFe": "1",
+    "notaMarginal": "sads"
+  }
+]
