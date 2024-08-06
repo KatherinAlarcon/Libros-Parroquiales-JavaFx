@@ -1,0 +1,47 @@
+[
+  {
+    "abueloPaterno": "",
+    "abuelaPaterna": "",
+    "abueloMaterno": "",
+    "abuelaMaterna": "",
+    "madrina": "",
+    "persona": {
+      "nombres": "yenny",
+      "apellidos": "alarcon",
+      "lugarNacimiento": "",
+      "genero": "Femenino",
+      "padre": "",
+      "madre": "",
+      "padrinos": ""
+    },
+    "libro": "1",
+    "folio": "2",
+    "numero": "3",
+    "ministro": "ministro 1",
+    "daFe": "1",
+    "notaMarginal": ""
+  },
+  {
+    "abueloPaterno": "",
+    "abuelaPaterna": "",
+    "abueloMaterno": "",
+    "abuelaMaterna": "",
+    "madrina": "",
+    "persona": {
+      "nombres": "sds",
+      "fechaNacimiento": "2024-07-29",
+      "apellidos": "sds",
+      "lugarNacimiento": "",
+      "genero": "Femenino",
+      "padre": "",
+      "madre": "",
+      "padrinos": ""
+    },
+    "libro": "23",
+    "folio": "3",
+    "numero": "5",
+    "ministro": "ministro 1",
+    "daFe": "1",
+    "notaMarginal": ""
+  }
+]
